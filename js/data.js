@@ -1,6 +1,6 @@
 // This file is the content desk: edit these objects once and the page updates everywhere.
 const portfolioData = {
-    name: 'Precious Tim', role: '[TARGET ROLE]',
+    name: 'Precious Tim', role: 'Front End Web Developer',
     tagline: 'Junior developer with a curious brain, a fondness for tidy systems, and just enough CSS to be dangerous.',
     bio: '[ABOUT BIO PLACEHOLDER] I am a junior developer who enjoys turning slightly messy ideas into clear, useful digital experiences.',
     projects: [
