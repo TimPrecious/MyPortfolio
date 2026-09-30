@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Precious Tim | Portfolio Zine</title>
+  <meta name="description" content="A playful portfolio zine for a junior developer.">
+  <script>
+    // Set the theme before the first paint so the saved preference does not flash the wrong paper.
+    const savedTheme = localStorage.getItem('portfolio-zine-theme');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.dataset.theme = savedTheme || systemTheme;
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@500;700&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <svg class="noise" aria-hidden="true">
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="3" stitchTiles="stitch" />
+    </filter>
+    <rect width="100%" height="100%" filter="url(#grain)" />
+  </svg>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="page-wrap nav-wrap">
+      <a href="#top" class="wordmark">PT<span>✳</span></a>
+
+      <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
+        <a href="#about">about</a><a href="#projects">projects</a><a href="#skills">stack</a><a href="#blog">blog</a><a
+          href="#contact">contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"
+          aria-label="Switch to dark theme"><i class="bx bx-moon" aria-hidden="true"></i><span>theme</span>
+        </button>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation" aria-expanded="false"><i
+            class="bx bx-menu" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero section-pad" id="top" aria-labelledby="hero-title">
+      <div class="page-wrap hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow">available for good work</p>
+          <h1 id="hero-title" class="display-title"><span>[YOUR</span><span>NAME]</span></h1>
+          <p class="role-line">[TARGET ROLE] <i class="bx bx-right-arrow-alt" aria-hidden="true"></i> making the web
+            less weird, one interface at a time.</p>
+          <p class="hero-tagline">Junior developer with a curious brain, a fondness for tidy systems, and just enough
+            CSS to be dangerous.</p>
+          <a class="button button-primary" href="#contact"><i class="bx bx-paper-plane" aria-hidden="true"></i> hire me
+            maybe</a>
+        </div>
+
+        <div class="hero-art" aria-label="Profile collage">
+          <span class="sticker sticker-yellow">OPEN<br>TO<br>WORK</span><span
+            class="sticker sticker-pink">100%<br>HAND<br>CODED</span>
+          <figure class="profile-frame"><img src="ProgreSS.jpg" alt="Precious Tim profile photo">
+            <figcaption>junior dev / in progress</figcaption>
+          </figure>
+          <span class="scribble">* no stock photos<br>* no corporate jargon</span>
+        </div>
+      </div>
+      <div class="hero-note">scroll for the good bits <i class="bx bx-down-arrow-alt" aria-hidden="true"></i></div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="marquee-placeholder" aria-hidden="true"><span>HTML · CSS · JAVASCRIPT · PYTHON · DJANGO · GIT ·
+        CURIOSITY · HTML · CSS · JAVASCRIPT · PYTHON · DJANGO · GIT · CURIOSITY · </span></div>
+
+    <!-- PROJECTS -->
+    <section class="projects section-pad" id="projects" aria-labelledby="projects-title">
+      <div class="page-wrap">
+        <div class="section-heading">
+          <div class="section-label"><span>field notes</span></div>
+          <h2 id="projects-title" class="section-title">Things I’ve<br><em>made on purpose.</em></h2>
+          <p>Three placeholder projects, freshly cut from the development desk.</p>
+        </div>
+        <div class="project-grid" id="projectGrid"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about section-pad" id="about" aria-labelledby="about-title">
+      <div class="page-wrap about-layout">
+        <div class="section-label"><span>about the maker</span></div>
+        <article class="paper-card about-card">
+          <p class="eyebrow">a short note from the desk</p>
+          <h2 id="about-title">A developer,<br><em>still under construction.</em></h2>
+          <p class="body-copy">[ABOUT BIO PLACEHOLDER] I am a junior developer who enjoys turning slightly messy ideas
+            into clear, useful digital experiences. I care about the small details, ask too many good questions, and
+            believe debugging is just detective work with worse snacks.</p>
+          <p class="hand-note">learning in public<br>since forever ↗</p>
+          <div class="fact-row"><span class="fact-sticker">asks<br>why?</span><span
+              class="fact-sticker fact-blue">likes<br>systems</span><span
+              class="fact-sticker fact-red">ships<br>things</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills section-pad" id="skills" aria-labelledby="skills-title">
+      <div class="page-wrap skills-layout">
+        <div>
+          <div class="section-label"><span>the toolbox</span></div>
+          <h2 id="skills-title" class="section-title">My current<br><em>bag of tricks.</em></h2>
+        </div>
+        <div class="skill-groups" id="skillGroups"></div>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section class="blog section-pad" id="blog" aria-labelledby="blog-title">
+      <div class="page-wrap">
+        <div class="section-heading">
+          <div class="section-label"><span>notes from the process</span></div>
+          <h2 id="blog-title" class="section-title">Things I’m<br><em>thinking about.</em></h2>
+          <p>Small observations from learning, building, and occasionally arguing with a semicolon.</p>
+        </div>
+        <div class="blog-grid" id="blogGrid"></div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="contact section-pad" id="contact" aria-labelledby="contact-title">
+      <div class="page-wrap contact-layout">
+        <div>
+          <div class="section-label"><span>leave a note</span></div>
+          <h2 id="contact-title" class="section-title">Got a good<br><em>one?</em></h2>
+          <p class="body-copy">Tell me what you’re making, fixing, or plotting. I’ll bring questions and an unreasonable
+            number of tabs.</p>
+          <p class="hand-note">your move →</p>
+        </div>
+        <form class="contact-form" id="contactForm" action="mailto:replace@example.com" method="post"
+          enctype="text/plain"><label for="name">your name <span>*</span></label><input id="name" name="name"
+            type="text" placeholder="Ada, Alan, ..." required><label for="email">your email <span>*</span></label><input
+            id="email" name="email" type="email" placeholder="hello@example.com" required><label for="message">the pitch
+            <span>*</span></label><textarea id="message" name="message" rows="5" placeholder="I have this idea about..."
+            required></textarea><button class="button button-primary" type="submit"><i class="bx bx-send"
+              aria-hidden="true"></i> send the note</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-wrap footer-inner">
+      <p>© <span id="year"></span> Precious Tim / made with HTML, CSS &amp; stubbornness.</p><a
+        class="back-top sticker sticker-yellow" href="#top">back<br>to top ↑</a><button class="terminal-hint"
+        type="button" aria-label="Hidden terminal coming in Phase 3">psst... try the ` key</button>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
