@@ -2,7 +2,7 @@
 const portfolioData = {
     name: 'Precious Tim', role: 'Front End Web Developer',
     tagline: 'Junior developer with a curious brain, a fondness for tidy systems, and just enough CSS to be dangerous.',
-    bio: '[ABOUT BIO PLACEHOLDER] I am a junior developer who enjoys turning slightly messy ideas into clear, useful digital experiences.',
+    bio: 'Junior developer turning messy ideas into clear, useful digital experiences, one project at a time.',
     projects: [
         { title: '[PROJECT 1]', description: 'A placeholder product for solving a real problem without making the user read a manual.', tags: ['HTML', 'CSS', 'JavaScript'], live: '#', code: '#' },
         { title: '[PROJECT 2]', description: 'A small backend experiment where good data and a friendly interface get along.', tags: ['Python', 'Django', 'SQLite'], live: '#', code: '#' },
