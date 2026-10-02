@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Precious Tim | Portfolio Zine</title>
-  <meta name="description" content="A playful portfolio zine for a junior developer.">
+  <meta name="description" content="A playful portfolio zine for a front-end web developer.">
   <script>
     // Set the theme before the first paint so the saved preference does not flash the wrong paper.
     const savedTheme = localStorage.getItem('portfolio-zine-theme');
@@ -57,40 +57,42 @@
     <section class="hero section-pad" id="top" aria-labelledby="hero-title">
       <div class="page-wrap hero-layout">
         <div class="hero-copy">
-          <p class="eyebrow">available for good work</p>
+          <div class="section-label"><span>hello, i’m</span></div>
           <h1 id="hero-title" class="display-title"><span>[YOUR</span><span>NAME]</span></h1>
-          <p class="role-line">Front End Web Developer <i class="bx bx-right-arrow-alt" aria-hidden="true"></i> making
-            the web
-            less weird, one interface at a time.</p>
-          <p class="hero-tagline">Junior developer with a curious brain, a fondness for tidy systems, and just enough
-            CSS to be dangerous.</p>
-          <a class="button button-primary" href="#contact"><i class="bx bx-paper-plane" aria-hidden="true"></i> hire me
-            maybe</a>
+          <p class="role-line">Front End Web Developer <i class="bx bx-right-arrow-alt" aria-hidden="true"></i> building
+            web interfaces that make sense.</p>
+          <a class="button button-primary" href="#contact"><i class="bx bx-paper-plane" aria-hidden="true"></i> reach
+            out</a>
         </div>
 
         <div class="hero-art" aria-label="Profile collage">
-          <span class="sticker sticker-yellow">OPEN<br>TO<br>WORK</span><span
-            class="sticker sticker-pink">100%<br>HAND<br>CODED</span>
+          <span class="sticker sticker-yellow">AVAILABLE<br>FOR<br>WORK</span><span
+            class="sticker sticker-pink">100%<br>RESPONSIVE<br>DESIGNS</span>
           <figure class="profile-frame"><img src="ProgreSS.jpg" alt="Precious Tim profile photo">
-            <figcaption>junior dev / in progress</figcaption>
+            <figcaption>front-end developer</figcaption>
           </figure>
-          <span class="scribble">* no stock photos<br>* no corporate jargon</span>
         </div>
       </div>
       <div class="hero-note">scroll for the good bits <i class="bx bx-down-arrow-alt" aria-hidden="true"></i></div>
     </section>
 
     <!-- TICKER -->
-    <div class="marquee-placeholder" aria-hidden="true"><span>HTML · CSS · JAVASCRIPT · PYTHON · DJANGO · GIT ·
-        CURIOSITY · HTML · CSS · JAVASCRIPT · PYTHON · DJANGO · GIT · CURIOSITY · </span></div>
+    <div class="marquee-placeholder" aria-hidden="true">
+      <div class="marquee-track">
+        <span>HTML · CSS · JAVASCRIPT · GIT · CURIOSITY · HTML · CSS · JAVASCRIPT · GIT · CURIOSITY · HTML · CSS ·
+          JAVASCRIPT · GIT · CURIOSITY · HTML · CSS · JAVASCRIPT · GIT · CURIOSITY · HTML · CSS · JAVASCRIPT · GIT ·
+          CURIOSITY · HTML · CSS · JAVASCRIPT · GIT · CURIOSITY · HTML · CSS · JAVASCRIPT · GIT · CURIOSITY · HTML · CSS
+          · JAVASCRIPT · GIT · CURIOSITY · HTML · CSS · JAVASCRIPT · GIT · CURIOSITY ·</span>
+      </div>
+    </div>
 
     <!-- PROJECTS -->
     <section class="projects section-pad" id="projects" aria-labelledby="projects-title">
       <div class="page-wrap">
         <div class="section-heading">
           <div class="section-label"><span>field notes</span></div>
-          <h2 id="projects-title" class="section-title">Things I’ve<br><em>made on purpose.</em></h2>
-          <p>Three placeholder projects, freshly cut from the development desk.</p>
+          <h2 id="projects-title" class="section-title">Things I’ve<br><em>made with intention.</em></h2>
+          <p>A selection of three builds from my recent front-end work and design experiments.</p>
         </div>
         <div class="project-grid" id="projectGrid"></div>
       </div>
@@ -102,10 +104,10 @@
         <div class="section-label"><span>about the maker</span></div>
         <article class="paper-card about-card">
           <p class="eyebrow">a short note from the desk</p>
-          <h2 id="about-title">A developer,<br><em>still under construction.</em></h2>
-          <p class="body-copy">Junior developer turning messy ideas into clear, useful digital experiences, one project
-            at a time.</p>
-          <p class="hand-note">learning in public<br>since forever ↗</p>
+          <h2 id="about-title">A developer,<br><em>building thoughtful experiences.</em></h2>
+          <p class="body-copy"></p>
+          <p class="body-copy"></p>
+          <p class="hand-note">designing with clarity<br>and a little curiosity ↗</p>
           <div class="fact-row"><span class="fact-sticker">asks<br>why?</span><span
               class="fact-sticker fact-blue">likes<br>systems</span><span
               class="fact-sticker fact-red">ships<br>things</span></div>
@@ -141,15 +143,15 @@
       <div class="page-wrap contact-layout">
         <div>
           <div class="section-label"><span>leave a note</span></div>
-          <h2 id="contact-title" class="section-title">Got a good<br><em>one?</em></h2>
+          <h2 id="contact-title" class="section-title">Got an<br><em>idea?</em></h2>
           <p class="body-copy">Tell me what you’re making, fixing, or plotting. I’ll bring questions and an unreasonable
             number of tabs.</p>
           <p class="hand-note">your move →</p>
         </div>
-        <form class="contact-form" id="contactForm" action="mailto:replace@example.com" method="post"
-          enctype="text/plain"><label for="name">your name <span>*</span></label><input id="name" name="name"
-            type="text" placeholder="Ada, Alan, ..." required><label for="email">your email <span>*</span></label><input
-            id="email" name="email" type="email" placeholder="hello@example.com" required><label for="message">the pitch
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xgavjeon" method="POST"><label
+            for="name">your name <span>*</span></label><input id="name" name="name" type="text"
+            placeholder="Ada, Alan, ..." required><label for="email">your email <span>*</span></label><input id="email"
+            name="email" type="email" placeholder="hello@example.com" required><label for="message">the pitch
             <span>*</span></label><textarea id="message" name="message" rows="5" placeholder="I have this idea about..."
             required></textarea><button class="button button-primary" type="submit"><i class="bx bx-send"
               aria-hidden="true"></i> send the note</button>

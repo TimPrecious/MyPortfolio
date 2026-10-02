@@ -7,11 +7,14 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 // These small bindings keep the visible copy tied to the same editable content object as the cards.
 document.querySelector('#hero-title').innerHTML = `<span>${data.name.replace(' ', '<br>')}</span>`;
 document.querySelector('.role-line').firstChild.textContent = `${data.role} `;
-document.querySelector('.hero-tagline').textContent = data.tagline;
-document.querySelector('.about-card .body-copy').textContent = data.bio;
+const heroTagline = document.querySelector('.hero-tagline');
+if (heroTagline) heroTagline.textContent = data.tagline;
+document.querySelectorAll('.about-card .body-copy').forEach((paragraph, index) => {
+    paragraph.textContent = data.bio[index];
+});
 
 // Rendering from data keeps project cards and skill tags consistent and easy to edit.
-document.querySelector('#projectGrid').innerHTML = data.projects.map(project => `<article class="project-card"><div class="clipping-top"><span>cut / paste / repeat</span></div><div class="project-preview"><i class="bx bx-code-alt" aria-hidden="true"></i><span>PROJECT<br>PREVIEW</span></div><div class="project-content"><h3>${project.title}</h3><p>${project.description}</p><ul class="tag-list">${project.tags.map(tag => `<li>${tag}</li>`).join('')}</ul><div class="project-links"><a href="${project.live}">Live <i class="bx bx-right-top-arrow-circle" aria-hidden="true"></i></a><a href="${project.code}">Code <i class="bx bxl-github" aria-hidden="true"></i></a></div></div></article>`).join('');
+document.querySelector('#projectGrid').innerHTML = data.projects.map(project => `<article class="project-card"><div class="clipping-top"><span>cut / paste / repeat</span></div><div class="project-preview"><img src="${project.image}" alt="${project.title} project preview" loading="lazy"></div><div class="project-content"><h3>${project.title}</h3><p>${project.description}</p><ul class="tag-list">${project.tags.map(tag => `<li>${tag}</li>`).join('')}</ul><div class="project-links"><a href="${project.live}">Live <i class="bx bx-right-top-arrow-circle" aria-hidden="true"></i></a><a href="${project.code}">Code <i class="bx bxl-github" aria-hidden="true"></i></a></div></div></article>`).join('');
 document.querySelector('#skillGroups').innerHTML = data.skillGroups.map(group => `<div class="skill-group"><h3>${group.title}</h3><ul>${group.items.map(item => `<li><i class="bx bx-check" aria-hidden="true"></i>${item}</li>`).join('')}</ul></div>`).join('');
 document.querySelector('#blogGrid').innerHTML = data.blogPosts.map(post => `<article class="blog-card"><p class="blog-date">${post.date}</p><h3>${post.title}</h3><p class="blog-excerpt">${post.excerpt}</p><ul class="tag-list">${post.tags.map(tag => `<li>${tag}</li>`).join('')}</ul><a class="blog-link" href="#contact">read the next note <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a></article>`).join('');
 
@@ -52,8 +55,30 @@ const navToggle = document.querySelector('#navToggle'); const siteNav = document
 navToggle.addEventListener('click', () => { const isOpen = siteNav.classList.toggle('is-open'); navToggle.setAttribute('aria-expanded', String(isOpen)); navToggle.querySelector('i').className = isOpen ? 'bx bx-x' : 'bx bx-menu'; });
 siteNav.addEventListener('click', event => { if (event.target.matches('a')) { siteNav.classList.remove('is-open'); navToggle.setAttribute('aria-expanded', 'false'); navToggle.querySelector('i').className = 'bx bx-menu'; } });
 
-// This is a front-end placeholder; Phase 3 will add inline validation and a success stamp.
-document.querySelector('#contactForm').addEventListener('submit', event => { event.preventDefault(); document.querySelector('#formStatus').textContent = 'Form placeholder ready. Connect Formspree or your mail service here.'; });
+const contactForm = document.querySelector('#contactForm');
+contactForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const formStatus = document.querySelector('#formStatus');
+    submitButton.disabled = true;
+    formStatus.textContent = 'Sending...';
+
+    try {
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: { Accept: 'application/json' }
+        });
+        if (!response.ok) throw new Error('Form submission failed');
+
+        formStatus.textContent = 'Thanks, your note has been sent.';
+        contactForm.reset();
+    } catch {
+        formStatus.textContent = 'Your note could not be sent. Please try again.';
+    } finally {
+        submitButton.disabled = false;
+    }
+});
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 // Reveals add visual rhythm as the reader moves down the page, without changing layout geometry.
