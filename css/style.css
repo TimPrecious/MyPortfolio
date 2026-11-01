@@ -609,6 +609,10 @@ textarea {
     object-fit: cover;
 }
 
+.project-preview-link {
+    display: block;
+}
+
 .project-content {
     padding: 24px;
 }
@@ -617,6 +621,15 @@ textarea {
     font: 1.4rem/1 var(--display);
     text-transform: uppercase;
     margin: 0 0 12px;
+}
+
+.project-content h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.project-content h3 a:hover {
+    color: var(--red);
 }
 
 .project-content p {

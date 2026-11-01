@@ -8,27 +8,27 @@ const portfolioData = {
     ],
     projects: [
         {
-            title: 'Goal.com Site Clone',
+            title: 'BlueEdge Task Manager',
             description: 'A polished front-end clone focused on responsive layout, clean product storytelling, and a premium landing-page feel.',
             tags: ['HTML', 'CSS', 'JavaScript'],
-            image: 'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=900&q=80',
-            live: '#',
+            image: 'BlueEdge.png',
+            live: 'https://bluedge-theta.vercel.app/',
             code: '#'
         },
         {
-            title: 'Neat Site',
+            title: 'Neat Laundry Services',
             description: 'A clean, modern marketing page built around a stripped-back visual style, clear hierarchy, and smooth UX details.',
             tags: ['HTML', 'CSS', 'JavaScript'],
-            image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80',
-            live: '#',
+            image: 'neat-hero.png',
+            live: 'https://neatservices-chi.vercel.app/',
             code: '#'
         },
         {
-            title: 'Coming Soon',
-            description: 'A new project is on the way and will be showcased here soon.',
-            tags: ['Coming Soon', 'Build', 'Design'],
-            image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80',
-            live: '#',
+            title: 'Aura Studio',
+            description: 'A minimalist creative-agency website showcasing branding, UI/UX, and responsive web design.',
+            tags: ['HTML', 'CSS', 'JavaScript'],
+            image: 'aura_studio.png',
+            live: 'https://aura-studio-black-seven.vercel.app/',
             code: '#'
         }
     ],

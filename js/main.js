@@ -14,7 +14,27 @@ document.querySelectorAll('.about-card .body-copy').forEach((paragraph, index) =
 });
 
 // Rendering from data keeps project cards and skill tags consistent and easy to edit.
-document.querySelector('#projectGrid').innerHTML = data.projects.map(project => `<article class="project-card"><div class="clipping-top"><span>cut / paste / repeat</span></div><div class="project-preview"><img src="${project.image}" alt="${project.title} project preview" loading="lazy"></div><div class="project-content"><h3>${project.title}</h3><p>${project.description}</p><ul class="tag-list">${project.tags.map(tag => `<li>${tag}</li>`).join('')}</ul><div class="project-links"><a href="${project.live}">Live <i class="bx bx-right-top-arrow-circle" aria-hidden="true"></i></a><a href="${project.code}">Code <i class="bx bxl-github" aria-hidden="true"></i></a></div></div></article>`).join('');
+document.querySelector('#projectGrid').innerHTML = data.projects.map(project => {
+    const hasLiveSite = project.live && project.live !== '#';
+    const projectUrl = hasLiveSite ? project.live : project.code && project.code !== '#' ? project.code : '';
+    const hasProjectUrl = Boolean(projectUrl);
+    const projectTarget = hasProjectUrl ? 'target="_blank" rel="noopener noreferrer"' : '';
+    const previewImage = `<img src="${project.image}" alt="${project.title} project preview" loading="lazy">`;
+    const preview = hasProjectUrl
+        ? `<a class="project-preview-link" href="${projectUrl}" ${projectTarget}>${previewImage}</a>`
+        : previewImage;
+    const title = hasProjectUrl
+        ? `<a href="${projectUrl}" ${projectTarget}>${project.title}</a>`
+        : project.title;
+    const liveLink = hasLiveSite
+        ? `<a href="${project.live}" target="_blank" rel="noopener noreferrer">Live <i class="bx bx-right-top-arrow-circle" aria-hidden="true"></i></a>`
+        : '';
+    const codeLink = project.code && project.code !== '#'
+        ? `<a href="${project.code}" target="_blank" rel="noopener noreferrer">Code <i class="bx bxl-github" aria-hidden="true"></i></a>`
+        : '';
+
+    return `<article class="project-card"><div class="clipping-top"><span>cut / paste / repeat</span></div><div class="project-preview">${preview}</div><div class="project-content"><h3>${title}</h3><p>${project.description}</p><ul class="tag-list">${project.tags.map(tag => `<li>${tag}</li>`).join('')}</ul><div class="project-links">${liveLink}${codeLink}</div></div></article>`;
+}).join('');
 document.querySelector('#skillGroups').innerHTML = data.skillGroups.map(group => `<div class="skill-group"><h3>${group.title}</h3><ul>${group.items.map(item => `<li><i class="bx bx-check" aria-hidden="true"></i>${item}</li>`).join('')}</ul></div>`).join('');
 document.querySelector('#blogGrid').innerHTML = data.blogPosts.map(post => `<article class="blog-card"><p class="blog-date">${post.date}</p><h3>${post.title}</h3><p class="blog-excerpt">${post.excerpt}</p><ul class="tag-list">${post.tags.map(tag => `<li>${tag}</li>`).join('')}</ul><a class="blog-link" href="#contact">read the next note <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a></article>`).join('');
 
